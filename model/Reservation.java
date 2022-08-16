@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Date;
+import java.util.Objects;
 
 public class Reservation {
     Customer customer;
@@ -54,13 +55,16 @@ public class Reservation {
     }
 
     @Override
-    public int hashCode() {
-        return 0;
-    }
-        
-    @Override
     public boolean equals(Object o) {
-        return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        Reservation reservatioon = (Reservation) o;
+        return Objects.equals(customer, reservatioon.customer) && Objects.equals(room, reservatioon.room) && Objects.equals(inDate, reservatioon.inDate) && Objects.equals(outDate, reservatioon.outDate);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(customer, room, inDate, outDate);
     }
 }

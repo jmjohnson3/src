@@ -16,9 +16,6 @@ public class MainMenu {
     private static Collection < Reservation > reservation = new HashSet < > ();
     public static Collection < IRoom > freeRooms =  new HashSet < > ();
 
-
-
-
     public static void main(String[] args) {
         MainMainMenu();
     }

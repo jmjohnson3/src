@@ -30,12 +30,6 @@ public class CustomerService {
             }catch(IllegalArgumentException ex){
                 System.out.println(ex.getLocalizedMessage());
             }
-    //System.out.println(customerHash);
-    //System.out.println(customerr);
-    //System.out.println(mapCustomers);
-    //System.out.println(Customer);
-
-    
     }
 
     public  Customer getCustomer(String customerEmail){

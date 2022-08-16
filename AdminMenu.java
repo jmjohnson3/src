@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 import api.AdminResource;
 import api.HotelResource;
@@ -15,7 +14,6 @@ import model.Room;
 import model.RoomType;
 
 public class AdminMenu {
-    private static final RoomType RoomType = null;
     public static List < IRoom > roomList = new ArrayList < > ();
     private static Collection < IRoom > roomsHash = new HashSet < > ();
     public static Map < String, IRoom > rooms = new HashMap < String, IRoom > ();
@@ -23,7 +21,6 @@ public class AdminMenu {
 
     private static Collection < Customer > Customerz = new HashSet < > ();
     private static AdminResource instAdminResource = AdminResource.getInstance();
-    private static HotelResource instHotelResource = HotelResource.getInstance();
 
     private static AdminMenu instAdminMenu = null;
 
@@ -92,11 +89,9 @@ public class AdminMenu {
                                 try {
                                     Scanner numberScanner = new Scanner(System.in);
                                     System.out.println("Enter room number");
-                                    //int Roomselection = Integer.parseInt(numberScanner.nextLine());   
                                     roomNumber = numberScanner.nextLine();
                  
                             if (HotelResource.getRoom(roomNumber) == null) {
-                                //continue;    
                                 keepRunningNumber = false;
                                         
                             }
@@ -109,7 +104,6 @@ public class AdminMenu {
                                 } catch (Exception ex) {
                                     continue;
                                 }
-                                //keepRunningNumber = false;
                             }
                             
                         
@@ -146,10 +140,7 @@ public class AdminMenu {
             
 
                                         room = new Room(roomNumber, roomPrice, roomType);
-//System.out.println(room);
                             roomList.add(room);
-                            //System.out.println(roomList);
-
                             instAdminResource.addRoom(roomList);
                            break;
                         case 5:
