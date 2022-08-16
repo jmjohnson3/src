@@ -45,16 +45,11 @@ public class ReservationService {
         if (CuReservations == null) {
             CuReservations = new LinkedList < > ();
         }
-        if(!((Collection<Reservation>) reservation).contains(CuReservations)){
+
             CuReservations.add(reservation);
             reservationsHash.add(reservation);        
             reservations.put(customer.getEmail(), CuReservations);
-            return reservation;
-        } else{
-System.out.println("FART");
-        return reservation;
-        }
-        
+            return reservation;       
     }
 
     public Collection < Reservation > getCustomersReservation(Customer customer) {
