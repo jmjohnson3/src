@@ -76,12 +76,12 @@ public class MainMenu {
                                     System.out.println("Would you like to book a room? y/n");
                                     yn = ynScanner.nextLine();
                                     // ynScanner.close();
-                                    if (yn.equals("y") || yn.equals("Y")) {
+                                    if (yn.equalsIgnoreCase("y")) {
 
                                         bookRoom(inDate, outDate);
+                                        
 
-
-                                    } else if (yn.equals("n") || yn.equals("N")) {
+                                    } else if (yn.equalsIgnoreCase("n")) {
                                         MainMenu.MainMainMenu();
                                     } else {
                                         System.out.println("Please enter only y or n");
@@ -148,7 +148,7 @@ public class MainMenu {
                 Scanner ynScanner = new Scanner(System.in);
                 System.out.println("Do you have an account? y/n");
                 yn = ynScanner.nextLine();
-                if (yn.equals("y") || yn.equals("Y")) {
+                if (yn.equalsIgnoreCase("y")) {
                     email = getEmail();
 
                     Customer customer = instHotelResource.getCustomer(email);
@@ -175,7 +175,7 @@ public class MainMenu {
         }
     }
     
-             else if  (yn.equals("n") || yn.equals("N")) {
+             else if  (yn.equalsIgnoreCase("n")) {
                 MainMenu.MainMainMenu();
             }
         
