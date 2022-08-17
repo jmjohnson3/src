@@ -8,7 +8,6 @@ import java.util.Map;
 import model.Customer;
 
 public class CustomerService {
-
     private static Map<String, Customer> mapCustomers = new HashMap<String, Customer>();
     private static Collection<Customer> customerHash = new HashSet<>();
     private static CustomerService instcustomerService = null;

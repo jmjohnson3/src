@@ -5,9 +5,9 @@ import java.util.Objects;
 
 public class Reservation {
     Customer customer;
-    public IRoom room;
-    public java.util.Date inDate;
-    public java.util.Date outDate;
+    private IRoom room;
+    private java.util.Date inDate;
+    private java.util.Date outDate;
 
     public Reservation(Customer customer, IRoom room, java.util.Date inDate, java.util.Date outDate) {
         this.customer = customer;

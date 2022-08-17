@@ -3,7 +3,8 @@ package model;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-public class Customer { private final String fname;
+public class Customer { 
+    private final String fname;
     private final String lname;
     private final String email;
 
