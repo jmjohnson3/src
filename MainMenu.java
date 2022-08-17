@@ -175,6 +175,8 @@ public class MainMenu {
                             keepRunning = false;
                             System.exit(0);
                             break;
+                        default: System.out.println("\nError - Invalid input, please enter a number between 1 and 5\n");
+                            break;
                     }
                 } catch (Exception ex) {
                     System.out.println("\nError - Invalid input, please enter a number between 1 and 5\n");

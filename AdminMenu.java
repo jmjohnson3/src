@@ -126,25 +126,31 @@ public class AdminMenu {
                     switch (Typeselection) {
                         case 1:
                         roomType = model.RoomType.SINGLE;
+                        keepRunningType = false;
                         break;
                         case 2:
                         roomType = model.RoomType.DOUBLE;
+                        keepRunningType = false;
                         break;
+                        default: System.out.println("Invalid Room Type");
+                        keepRunningType = true;
+                        //break;
                     }
                     } catch (Exception ex) {
                         System.out.println("\nError - Invalid input, please enter a number between 1 or 2\n");
                     } finally {
-                        keepRunningType = false;
+                       
                     }
                 }
-            
 
-                                        room = new Room(roomNumber, roomPrice, roomType);
+                                       room = new Room(roomNumber, roomPrice, roomType);
                             roomList.add(room);
                             instAdminResource.addRoom(roomList);
                            break;
                         case 5:
                             MainMenu.MainMainMenu();
+                            break;
+                        default: System.out.println("\nError - Invalid input, please enter a number between 1 and 5\n");
                             break;
                     }
                 } catch (Exception ex) {
