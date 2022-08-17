@@ -6,16 +6,13 @@ public class Room implements IRoom{
 
     public String number;
     protected Double price;
-    protected static RoomType roomType;
-
-
-
+    protected RoomType roomType;
 
     public Room(String roomNumber, double price, RoomType roomType) {
         this.number = roomNumber;
         this.price = price;
-        Room.roomType = roomType;
-    }
+        this.roomType = roomType;        
+        }
 
     @Override
     public String getNumbeString() {
