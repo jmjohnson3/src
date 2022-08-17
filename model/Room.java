@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Room implements IRoom{
 
-    protected String number;
+    public String number;
     protected Double price;
     protected static RoomType roomType;
 

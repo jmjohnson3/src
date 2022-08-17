@@ -75,11 +75,60 @@ public class MainMenu {
                                 try {
                                     System.out.println("Would you like to book a room? y/n");
                                     yn = ynScanner.nextLine();
-                                    // ynScanner.close();
                                     if (yn.equalsIgnoreCase("y")) {
-
-                                        bookRoom(inDate, outDate);
+                                        String bookyn;
+                                        IRoom room;
+                                        String email = null;
+                                        boolean bookRoomKeepRunning = true;
+                                        boolean getNumberKeepRunning = true;
+                                
+                                        while (bookRoomKeepRunning) {
+                                            try {
+                                                Scanner bookynScanner = new Scanner(System.in);
+                                                System.out.println("Do you have an account? y/n");
+                                                bookyn = bookynScanner.nextLine();
+                                                if (bookyn.equalsIgnoreCase("y")) {
+                                                    email = getEmail();
+                                
+                                                    Customer customer = instHotelResource.getCustomer(email);
+                                                    if (customer.equals(null)) {
+                                                        System.out.println("No email");
+                                                        throw new IllegalArgumentException();
+                                                    }
+                                                    
+                                        while (getNumberKeepRunning) {
+                                            try {
+                                                Scanner roomScanner = new Scanner(System.in);
+                                                System.out.println("What room number would you like to reserve");
+                                                String Roomselection = roomScanner.nextLine();       
+                                                if(Roomselection.contains(((model.Room)freeRooms.toArray()[0]).number)){
+                                                room = instHotelResource.getRoom(Roomselection);
+                                                instHotelResource.bookARoom(email, room, inDate, outDate);
+                                                getNumberKeepRunning = false;
+                                                }
+                                                else{
+                                                    System.out.println("That room has already been booked.\nSelect another room");
+                                                }
+                                            }
                                         
+                                        catch (Exception ex) {
+                                            System.out.println("Error - Invalid input");
+                                        } finally {
+                                            bookRoomKeepRunning = false;
+                                        }
+                                        }
+                                    }
+                                    
+                                             else if  (yn.equalsIgnoreCase("n")) {
+                                                MainMenu.MainMainMenu();
+                                            }
+                                        
+                                        
+                                        bookRoomKeepRunning = false;
+                                        } finally {
+                                            bookRoomKeepRunning = false;
+                                        }
+                                    }                                        
 
                                     } else if (yn.equalsIgnoreCase("n")) {
                                         MainMenu.MainMainMenu();
@@ -132,60 +181,6 @@ public class MainMenu {
                 }
             }
         }
-    }
-
-
-    private static void bookRoom(java.util.Date inDate, java.util.Date outDate) {
-        String yn;
-        //int number;
-        IRoom room;
-        String email = null;
-        boolean bookRoomKeepRunning = true;
-        boolean getNumberKeepRunning = true;
-
-        while (bookRoomKeepRunning) {
-            try {
-                Scanner ynScanner = new Scanner(System.in);
-                System.out.println("Do you have an account? y/n");
-                yn = ynScanner.nextLine();
-                if (yn.equalsIgnoreCase("y")) {
-                    email = getEmail();
-
-                    Customer customer = instHotelResource.getCustomer(email);
-                    if (customer.equals(null)) {
-                        System.out.println("No email");
-                        throw new IllegalArgumentException();
-                    }
-                    
-        while (getNumberKeepRunning) {
-            try {
-                Scanner roomScanner = new Scanner(System.in);
-                System.out.println("What room number would you like to reserve");
-                String Roomselection = roomScanner.nextLine();       
-                room = instHotelResource.getRoom(Roomselection);
-                instHotelResource.bookARoom(email, room, inDate, outDate);
-                getNumberKeepRunning = false;
-            }
-        
-        catch (Exception ex) {
-            System.out.println("Error - Invalid input");
-        } finally {
-            bookRoomKeepRunning = false;
-        }
-        }
-    }
-    
-             else if  (yn.equalsIgnoreCase("n")) {
-                MainMenu.MainMainMenu();
-            }
-        
-        
-        bookRoomKeepRunning = false;
-        } finally {
-            bookRoomKeepRunning = false;
-        }
-    }
-    
     }
 
     private static String getlname(String string) {
