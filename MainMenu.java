@@ -1,6 +1,12 @@
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Scanner;
@@ -276,8 +282,10 @@ public class MainMenu {
         java.util.Date formatedDate = null;
         boolean DateKeepRunning = true;
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -1);
+        Date yesterday = calendar.getTime();
         while (DateKeepRunning) {
-
 
             System.out.println("Enter check " + dateType + " mm/dd/yyyy example 02/01/2020");
 
@@ -286,12 +294,20 @@ public class MainMenu {
                 Scanner DateScanner = new Scanner(System.in);
                 String date = DateScanner.nextLine();
                 formatedDate = dateFormat.parse(date);
+                if(formatedDate.compareTo(yesterday) == 1) {
+                    DateKeepRunning = false;
+
+                } else {
+                   System.out.println("\nPlease enter a day in the future\n");
+                    DateKeepRunning = true;
+
+                }
 
             } catch (Exception ex) {
                 System.out.println("Error -  Invalid Input");
                 continue;
             }
-            DateKeepRunning = false;
+            //DateKeepRunning = false;
         }
         return formatedDate;
     }
@@ -302,4 +318,5 @@ public class MainMenu {
             rooms.forEach(System.out::println);
         }
     }
+    
 }
